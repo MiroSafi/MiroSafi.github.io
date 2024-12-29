@@ -1,7 +1,7 @@
 {
   "name": "taxikules",
   "version": "0.1.0",
-  "homepage": "https://MiroSafi.github.io/react-gh-pages",
+  "homepage": "https://MiroSafi.github.io/",
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
