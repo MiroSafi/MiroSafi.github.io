@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/MiroSafi/static/css/main.e6c13ad2.css",
+    "main.js": "/MiroSafi/static/js/main.9d5d7032.js",
+    "static/js/488.8fda70c2.chunk.js": "/MiroSafi/static/js/488.8fda70c2.chunk.js",
+    "static/media/email.png": "/MiroSafi/static/media/email.46bd8d87a8f8fb7525d8.png",
+    "static/media/whatsapp.png": "/MiroSafi/static/media/whatsapp.4255e7df3bd5052d3ed7.png",
+    "static/media/phone.png": "/MiroSafi/static/media/phone.f44ac5b1387dcbd7395a.png",
+    "index.html": "/MiroSafi/index.html",
+    "main.e6c13ad2.css.map": "/MiroSafi/static/css/main.e6c13ad2.css.map",
+    "main.9d5d7032.js.map": "/MiroSafi/static/js/main.9d5d7032.js.map",
+    "488.8fda70c2.chunk.js.map": "/MiroSafi/static/js/488.8fda70c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.9d5d7032.js"
+  ]
+}
