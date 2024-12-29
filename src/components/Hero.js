@@ -90,43 +90,46 @@ const styles = {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    zIndex: -1, // Keep the video behind the content
+    zIndex: -1,
     opacity: 0.8,
   },
   overlay: {
     position: 'relative',
     color: '#FFF',
     zIndex: 1,
-    padding: '20px',
+    padding: '10px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '90%',
   },
   icon: {
-    marginBottom: '20px',
+    marginBottom: '15px',
   },
   iconImage: {
-    width: '80px',
-    height: '80px',
+    width: '60px',
+    height: '60px',
   },
   heading: {
-    fontSize: '3rem', // Increased font size for better visibility
-    margin: '10px 0 20px',
+    fontSize: '2rem',
+    margin: '10px 0 15px',
     fontWeight: 'bold',
-    fontFamily: "'Roboto', sans-serif", // Modern, clean font
+    fontFamily: "'Roboto', sans-serif",
   },
   buttonGroup: {
     display: 'flex',
-    gap: '20px',
-    marginBottom: '20px',
+    flexDirection: 'column',
+    gap: '15px',
+    marginBottom: '15px',
   },
   legend: {
-    fontSize: '1.5rem',
-    marginTop: '20px',
-    color: '#FFD700', // Gold color
+    fontSize: '1rem',
+    marginTop: '10px',
+    color: '#FFD700',
     fontStyle: 'italic',
-    fontFamily: "'Roboto', sans-serif", // Consistent font with the heading
+    fontFamily: "'Roboto', sans-serif",
+    textAlign: 'center',
   },
 };
 

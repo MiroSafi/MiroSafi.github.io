@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage the menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle the menu on or off
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
     <header style={styles.header}>
       <h1 style={styles.logo}>Taxicules</h1>
-      
+
       {/* Burger icon */}
       <button style={styles.burgerButton} onClick={toggleMenu}>
         <span style={styles.burgerLine}></span>
@@ -18,14 +23,91 @@ const Header = () => {
         <span style={styles.burgerLine}></span>
       </button>
 
-      {/* Navigation menu (only visible when isMenuOpen is true) */}
-      <nav style={{ ...styles.nav, display: isMenuOpen ? 'block' : 'none' }}>
+      {/* Navigation menu */}
+      <nav
+        style={{
+          ...styles.nav,
+          transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+        }}
+      >
         <ul style={styles.navList}>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="hero"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              Hero
+            </ScrollLink>
+          </li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="services"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              Services
+            </ScrollLink>
+          </li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="about"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              About
+            </ScrollLink>
+          </li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="pricing"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              Pricing
+            </ScrollLink>
+          </li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="contact"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              Contact
+            </ScrollLink>
+          </li>
+          <li style={styles.navItem}>
+            <ScrollLink
+              to="footer"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={closeMenu}
+              style={styles.navLink}
+            >
+              Footer
+            </ScrollLink>
+          </li>
         </ul>
       </nav>
+
+      {/* Overlay */}
+      {isMenuOpen && <div style={styles.overlay} onClick={closeMenu}></div>}
     </header>
   );
 };
@@ -36,16 +118,18 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
-    backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background
-    color: '#FFD700', // Golden color for text
-    width: '100%', // Full width
-    position: 'absolute', // Positioned above the video
-    top: '0',
-    left: '0',
-    zIndex: 2, // Ensure it stays above the video
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)', // Optional shadow
+    backgroundColor: '#333',
+    color: '#FFD700',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 1000,
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
   },
-  logo: { fontSize: '24px' },
+  logo: {
+    fontSize: '24px',
+  },
   burgerButton: {
     background: 'transparent',
     border: 'none',
@@ -62,21 +146,41 @@ const styles = {
     borderRadius: '2px',
   },
   nav: {
-    display: 'flex',
-    gap: '15px',
-    padding: 0,
-    margin: 0,
-    listStyle: 'none',
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    height: '100vh',
+    width: '250px',
+    backgroundColor: '#222',
+    padding: '20px',
+    transform: 'translateX(100%)',
+    transition: 'transform 0.3s ease-in-out',
+    zIndex: 1001,
   },
   navList: {
-    display: 'flex',
-    gap: '15px',
+    listStyle: 'none',
     padding: 0,
     margin: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+  },
+  navItem: {
+    textAlign: 'center',
   },
   navLink: {
     color: '#FFD700',
     textDecoration: 'none',
+    fontSize: '1.2rem',
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100vh',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 1000,
   },
 };
 

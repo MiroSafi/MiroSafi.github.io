@@ -15,7 +15,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section style={styles.services}>
+    <section id="services" style={styles.services}>
       <h2 style={styles.heading}>Unsere Dienstleistungen</h2>
       <div style={styles.grid}>
         {services.map((service, index) => (
@@ -31,15 +31,16 @@ const Services = () => {
 
 const styles = {
   services: {
-    height: '100vh', // Full screen height
+    minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    backgroundColor: '#222', // Dark background
-    color: '#FFD700', // Golden text
-    padding: '20px',
+    backgroundColor: '#222',
+    color: '#FFD700',
+    padding: '40px 20px',
+    boxSizing: 'border-box',
   },
   heading: {
     fontSize: '2.5rem',
@@ -47,17 +48,18 @@ const styles = {
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', // Responsive grid
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '20px',
     width: '100%',
     maxWidth: '1200px',
   },
   card: {
-    backgroundColor: '#333', // Slightly lighter than the background
+    backgroundColor: '#333',
     padding: '20px',
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
+    transition: 'transform 0.2s ease-in-out',
   },
   cardTitle: {
     fontSize: '1.5rem',
