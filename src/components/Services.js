@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const services = [
   { title: 'Gruppenfahrten', description: 'Ideal für Gruppenreisen mit maximalem Komfort.' },
@@ -14,12 +14,57 @@ const services = [
 ];
 
 const Services = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false); // Reset visibility for repeat animations
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="services" style={styles.services}>
-      <h2 style={styles.heading}>Unsere Dienstleistungen</h2>
+    <section
+      id="services"
+      ref={sectionRef}
+      style={styles.services}
+    >
+      <h2
+        style={{
+          ...styles.heading,
+          ...(isVisible ? styles.headingVisible : styles.headingHidden),
+        }}
+      >
+        Unsere Dienstleistungen
+      </h2>
       <div style={styles.grid}>
         {services.map((service, index) => (
-          <div key={index} style={styles.card}>
+          <div
+            key={index}
+            style={{
+              ...styles.card,
+              ...(isVisible ? styles.cardVisible : styles.cardHidden),
+            }}
+          >
             <h3 style={styles.cardTitle}>{service.title}</h3>
             <p style={styles.cardDescription}>{service.description}</p>
           </div>
@@ -45,6 +90,15 @@ const styles = {
   heading: {
     fontSize: '2.5rem',
     marginBottom: '20px',
+    transition: 'opacity 1s ease-out, transform 1s ease-out',
+  },
+  headingHidden: {
+    opacity: 0,
+    transform: 'translateY(-50px)',
+  },
+  headingVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
   },
   grid: {
     display: 'grid',
@@ -59,7 +113,15 @@ const styles = {
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
-    transition: 'transform 0.2s ease-in-out',
+    transition: 'opacity 1s ease-out, transform 1s ease-out',
+  },
+  cardHidden: {
+    opacity: 0,
+    transform: 'translateY(50px)',
+  },
+  cardVisible: {
+    opacity: 1,
+    transform: 'translateY(0)',
   },
   cardTitle: {
     fontSize: '1.5rem',

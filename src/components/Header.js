@@ -40,7 +40,7 @@ const Header = () => {
               onClick={closeMenu}
               style={styles.navLink}
             >
-              Hero
+              Home
             </ScrollLink>
           </li>
           <li style={styles.navItem}>
@@ -91,7 +91,7 @@ const Header = () => {
               Contact
             </ScrollLink>
           </li>
-          <li style={styles.navItem}>
+          {/* <li style={styles.navItem}>
             <ScrollLink
               to="footer"
               smooth={true}
@@ -102,7 +102,7 @@ const Header = () => {
             >
               Footer
             </ScrollLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
 

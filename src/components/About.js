@@ -11,6 +11,8 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+          } else {
+            setIsVisible(false); // Reset visibility when out of view
           }
         });
       },
@@ -31,7 +33,7 @@ const About = () => {
   }, []);
 
   return (
-    <section style={styles.about}>
+    <section id="about" style={styles.about}>
       <div
         ref={headerRef}
         style={{
@@ -57,8 +59,9 @@ const About = () => {
           <strong>Erfahrung</strong> in der Personenbeförderung sorgen wir dafür, dass Sie sicher,
           komfortabel und rechtzeitig Ihr Ziel erreichen.
         </p>
-        <p>Besonderes wichtig ist uns ein engagiertes und zufriedenes Team Ihnen zur Verfügung zu stellen. <strong>
-        Und das Europa weit!</strong>
+        <p>
+          Besonders wichtig ist uns ein engagiertes und zufriedenes Team Ihnen zur Verfügung zu stellen. <strong>
+          Und das Europa weit!</strong>
         </p>
         <p>
           Entscheiden Sie sich für Taxicules und erleben Sie einen Service, der durch Qualität und

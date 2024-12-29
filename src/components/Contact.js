@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +15,31 @@ const Contact = () => {
     message: '',
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false); // Reset visibility for repeat animations
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -21,12 +48,20 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
-    // Handle form submission logic here
   };
 
   return (
-    <section style={styles.contact}>
-      <div style={styles.overlay}>
+    <section
+      id="contact"
+      ref={sectionRef}
+      style={styles.contact}
+    >
+      <div
+        style={{
+          ...styles.overlay,
+          ...(isVisible ? styles.visible : styles.hidden),
+        }}
+      >
         <h2 style={styles.heading}>Reservieren</h2>
         <p style={styles.subheading}>Einfach und unkompliziert!</p>
 
@@ -97,6 +132,15 @@ const styles = {
     backgroundColor: '#282828',
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+    transition: 'opacity 1s ease-out, transform 1s ease-out',
+  },
+  hidden: {
+    opacity: 0,
+    transform: 'translateY(50px)',
+  },
+  visible: {
+    opacity: 1,
+    transform: 'translateY(0)',
   },
   heading: {
     fontSize: '2rem',

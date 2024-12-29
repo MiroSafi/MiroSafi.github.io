@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from './Header'; // Import Header component
-import Button from './Button'; // Import Button component
-import whatsappIcon from './icons/whatsapp.png';
-import phoneIcon from './icons/phone.png';
-import emailIcon from './icons/email.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome component
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import {  faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
 
 const Hero = () => {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/491234567890', '_blank');
+    window.open('https://wa.me/+491234567890', '_blank');
   };
 
   const handleCallClick = () => {
@@ -15,11 +14,11 @@ const Hero = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:info@taxicules.de';
+    window.location.href = 'mailto:taxikules@gmail.com';
   };
 
   return (
-    <section style={styles.hero}>
+    <section id="hero" style={styles.hero}>
       {/* Header */}
       <Header />
 
@@ -41,27 +40,18 @@ const Hero = () => {
 
         {/* Buttons */}
         <div style={styles.buttonGroup}>
-          <Button
-            icon={whatsappIcon}
-            title="WhatsApp"
-            onClick={handleWhatsAppClick}
-            backgroundColor="#25D366"
-            textColor="#000"
-          />
-          <Button
-            icon={phoneIcon}
-            title="056143083015"
-            onClick={handleCallClick}
-            backgroundColor="#FFD700"
-            textColor="#000"
-          />
-          <Button
-            icon={emailIcon}
-            title="Email"
-            onClick={handleEmailClick}
-            backgroundColor="#FFD700"
-            textColor="#000"
-          />
+          <button style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
+            <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
+            WhatsApp
+          </button>
+          <button style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
+            <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
+            056143083015
+          </button>
+          <button style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
+            <FontAwesomeIcon icon={faEnvelope} style={styles.iconStyle} />
+            Email
+          </button>
         </div>
 
         {/* Legend */}
@@ -122,6 +112,21 @@ const styles = {
     flexDirection: 'column',
     gap: '15px',
     marginBottom: '15px',
+  },
+  button: {
+    padding: '10px 20px',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    border: 'none',
+    borderRadius: '5px',
+    color: '#000',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
+  iconStyle: {
+    fontSize: '1.2rem',
   },
   legend: {
     fontSize: '1rem',

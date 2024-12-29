@@ -19,7 +19,7 @@ const Footer = () => {
         {/* Email */}
         <div style={styles.infoBlock}>
           <h4 style={styles.title}>E-Mail</h4>
-          <p style={styles.text}>info@taxicules.de</p>
+          <p style={styles.text}>taxikules@gmail.com</p>
         </div>
       </div>
       {/* Copyright */}
