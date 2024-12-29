@@ -21,7 +21,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
-    // Here you can handle form submission (e.g., send data to a server or API)
+    // Handle form submission logic here
   };
 
   return (
@@ -31,121 +31,33 @@ const Contact = () => {
         <p style={styles.subheading}>Einfach und unkompliziert!</p>
 
         <form onSubmit={handleSubmit} style={styles.form}>
-          <div style={styles.formGroup}>
-            <label htmlFor="name" style={styles.label}>Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Ihr Name"
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="email" style={styles.label}>Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Ihre Email"
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="telefon" style={styles.label}>Telefon</label>
-            <input
-              type="tel"
-              id="telefon"
-              name="telefon"
-              value={formData.telefon}
-              onChange={handleChange}
-              placeholder="Ihre Telefonnummer"
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="abholadresse" style={styles.label}>Abholadresse</label>
-            <input
-              type="text"
-              id="abholadresse"
-              name="abholadresse"
-              value={formData.abholadresse}
-              onChange={handleChange}
-              placeholder="Abholadresse"
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="zieladresse" style={styles.label}>Zieladresse</label>
-            <input
-              type="text"
-              id="zieladresse"
-              name="zieladresse"
-              value={formData.zieladresse}
-              onChange={handleChange}
-              placeholder="Zieladresse"
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="termin" style={styles.label}>Termin</label>
-            <input
-              type="date"
-              id="termin"
-              name="termin"
-              value={formData.termin}
-              onChange={handleChange}
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="zeit" style={styles.label}>Zeit</label>
-            <input
-              type="time"
-              id="zeit"
-              name="zeit"
-              value={formData.zeit}
-              onChange={handleChange}
-              style={styles.input}
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="passagiere" style={styles.label}>Passagiere</label>
-            <input
-              type="number"
-              id="passagiere"
-              name="passagiere"
-              value={formData.passagiere}
-              onChange={handleChange}
-              placeholder="Anzahl der Passagiere"
-              style={styles.input}
-              min="1"
-            />
-          </div>
-
-          <div style={styles.formGroup}>
-            <label htmlFor="message" style={styles.label}>Nachricht</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Ihre Nachricht"
-              style={styles.textarea}
-            />
-          </div>
-
+          {formFields.map(({ id, type, placeholder, label, isTextArea, ...rest }) => (
+            <div key={id} style={styles.formGroup}>
+              <label htmlFor={id} style={styles.label}>{label}</label>
+              {isTextArea ? (
+                <textarea
+                  id={id}
+                  name={id}
+                  value={formData[id]}
+                  onChange={handleChange}
+                  placeholder={placeholder}
+                  style={styles.textarea}
+                  {...rest}
+                />
+              ) : (
+                <input
+                  type={type}
+                  id={id}
+                  name={id}
+                  value={formData[id]}
+                  onChange={handleChange}
+                  placeholder={placeholder}
+                  style={styles.input}
+                  {...rest}
+                />
+              )}
+            </div>
+          ))}
           <button type="submit" style={styles.submitButton}>Senden</button>
         </form>
       </div>
@@ -153,74 +65,90 @@ const Contact = () => {
   );
 };
 
+const formFields = [
+  { id: 'name', type: 'text', placeholder: 'Ihr Name', label: 'Name' },
+  { id: 'email', type: 'email', placeholder: 'Ihre Email', label: 'Email' },
+  { id: 'telefon', type: 'tel', placeholder: 'Ihre Telefonnummer', label: 'Telefon' },
+  { id: 'abholadresse', type: 'text', placeholder: 'Abholadresse', label: 'Abholadresse' },
+  { id: 'zieladresse', type: 'text', placeholder: 'Zieladresse', label: 'Zieladresse' },
+  { id: 'termin', type: 'date', placeholder: '', label: 'Termin' },
+  { id: 'zeit', type: 'time', placeholder: '', label: 'Zeit' },
+  { id: 'passagiere', type: 'number', placeholder: 'Anzahl der Passagiere', label: 'Passagiere', min: '1' },
+  { id: 'message', isTextArea: true, placeholder: 'Ihre Nachricht', label: 'Nachricht' },
+];
+
 const styles = {
   contact: {
     position: 'relative',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    backgroundColor: '#222',
+    backgroundColor: '#1a1a1a',
     color: '#FFD700',
+    padding: '20px',
   },
   overlay: {
     position: 'relative',
-    padding: '0 20px',
+    maxWidth: '500px',
+    width: '100%',
+    padding: '20px',
+    backgroundColor: '#282828',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
   },
   heading: {
-    fontSize: '3rem',
-    margin: '0',
+    fontSize: '2rem',
+    margin: '0 0 10px 0',
   },
   subheading: {
-    fontSize: '1.5rem',
-    marginTop: '10px',
-    marginBottom: '30px',
+    fontSize: '1rem',
+    marginBottom: '15px',
+    color: '#aaa',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    maxWidth: '500px',
-    width: '100%',
-    margin: '0 auto',
+    gap: '10px',
   },
   formGroup: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
+    gap: '5px',
   },
   label: {
-    fontSize: '1.2rem',
-    marginBottom: '5px',
+    fontSize: '0.9rem',
+    color: '#ccc',
   },
   input: {
-    padding: '10px',
-    fontSize: '1rem',
+    padding: '8px',
+    fontSize: '0.9rem',
     borderRadius: '5px',
-    border: '1px solid #ddd',
-    backgroundColor: '#333',
-    color: '#fff',
+    border: '1px solid #444',
+    backgroundColor: '#444',
+    color: '#FFF',
   },
   textarea: {
-    padding: '10px',
-    fontSize: '1rem',
+    padding: '8px',
+    fontSize: '0.9rem',
     borderRadius: '5px',
-    border: '1px solid #ddd',
-    backgroundColor: '#333',
-    color: '#fff',
+    border: '1px solid #444',
+    backgroundColor: '#444',
+    color: '#FFF',
     resize: 'vertical',
-    minHeight: '100px',
+    minHeight: '80px',
   },
   submitButton: {
-    padding: '12px 20px',
-    fontSize: '1.2rem',
+    padding: '10px',
+    fontSize: '1rem',
     backgroundColor: '#FFD700',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
     color: '#000',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 };
 
