@@ -7,13 +7,13 @@ const Footer = () => {
         {/* Address */}
         <div style={styles.infoBlock}>
           <h4 style={styles.title}>Adresse</h4>
-          <p style={styles.text}>Musterstraße 123, 12345 Musterstadt</p>
+          <p style={styles.text}>Am bettenhäuser Bahnhof 5</p>
         </div>
 
         {/* Telephone */}
         <div style={styles.infoBlock}>
           <h4 style={styles.title}>Telefon</h4>
-          <p style={styles.text}>+49 170 1234567</p>
+          <p style={styles.text}>+49 561 43083015</p>
         </div>
 
         {/* Email */}

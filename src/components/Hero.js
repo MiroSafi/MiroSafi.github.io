@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './Header'; // Import Header component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome component
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import {  faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
 
 const Hero = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false); // Reset visibility for repeat animations
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/+491234567890', '_blank');
   };
@@ -18,7 +46,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" style={styles.hero}>
+    <section
+      id="hero"
+      ref={sectionRef}
+      style={styles.hero}
+    >
       {/* Header */}
       <Header />
 
@@ -29,7 +61,12 @@ const Hero = () => {
       </video>
 
       {/* Centralized Content */}
-      <div style={styles.overlay}>
+      <div
+        style={{
+          ...styles.overlay,
+          ...(isVisible ? styles.visible : styles.hidden),
+        }}
+      >
         {/* Icon */}
         <div style={styles.icon}>
           <img src="/icons/logo.jpeg" alt="Taxi Icon" style={styles.iconImage} />
@@ -93,6 +130,15 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     width: '90%',
+    transition: 'opacity 1s ease-out, transform 1s ease-out',
+  },
+  hidden: {
+    opacity: 0,
+    transform: 'translateY(50px)',
+  },
+  visible: {
+    opacity: 1,
+    transform: 'translateY(0)',
   },
   icon: {
     marginBottom: '15px',

@@ -91,10 +91,6 @@ const priceData = [
     title: 'Flughafentransfers',
     details: ['Feste Preise auf Anfrage', '24/7 Verfügbarkeit'],
   },
-  {
-    title: 'Nachtzuschlag',
-    details: ['Zusätzliche Gebühr: 10% von 22:00 bis 6:00'],
-  },
 ];
 
 const styles = {
