@@ -81,7 +81,7 @@ const Hero = () => {
             <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
             WhatsApp
           </button>
-          <button style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
+          <button id='tel-button' style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
             <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
             056143083015
           </button>
