@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from 'emailjs-com'; // Import EmailJS
 
 const Contact = () => {
   const sectionRef = useRef(null);
@@ -22,7 +23,7 @@ const Contact = () => {
           if (entry.isIntersecting) {
             setIsVisible(true);
           } else {
-            setIsVisible(false); // Reset visibility for repeat animations
+            setIsVisible(false);
           }
         });
       },
@@ -47,7 +48,36 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data Submitted:', formData);
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      telefon: formData.telefon,
+      abholadresse: formData.abholadresse,
+      zieladresse: formData.zieladresse,
+      termin: formData.termin,
+      zeit: formData.zeit,
+      passagiere: formData.passagiere,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        'service_qm7qwh2', // Replace with your EmailJS Service ID
+        'template_41fhqfo', // Replace with your EmailJS Template ID
+        templateParams,
+        'bwPHfgFQTuUM__WLi' // Replace with your EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Email sent successfully!');
+        },
+        (err) => {
+          console.log('FAILED...', err);
+          alert('Failed to send email. Please try again later.');
+        }
+      );
   };
 
   return (
