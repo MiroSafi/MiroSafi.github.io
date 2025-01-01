@@ -15,6 +15,7 @@ const Contact = () => {
     passagiere: '',
     message: '',
   });
+  const [thankYouMessage, setThankYouMessage] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,7 +72,8 @@ const Contact = () => {
       .then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
-          alert('Email sent successfully!');
+          setThankYouMessage(true); // Show thank you message
+          setTimeout(() => setThankYouMessage(false), 5000); // Hide after 5 seconds
         },
         (err) => {
           console.log('FAILED...', err);
@@ -95,36 +97,40 @@ const Contact = () => {
         <h2 style={styles.heading}>Reservieren</h2>
         <p style={styles.subheading}>Einfach und unkompliziert!</p>
 
-        <form onSubmit={handleSubmit} style={styles.form}>
-          {formFields.map(({ id, type, placeholder, label, isTextArea, ...rest }) => (
-            <div key={id} style={styles.formGroup}>
-              <label htmlFor={id} style={styles.label}>{label}</label>
-              {isTextArea ? (
-                <textarea
-                  id={id}
-                  name={id}
-                  value={formData[id]}
-                  onChange={handleChange}
-                  placeholder={placeholder}
-                  style={styles.textarea}
-                  {...rest}
-                />
-              ) : (
-                <input
-                  type={type}
-                  id={id}
-                  name={id}
-                  value={formData[id]}
-                  onChange={handleChange}
-                  placeholder={placeholder}
-                  style={styles.input}
-                  {...rest}
-                />
-              )}
-            </div>
-          ))}
-          <button type="submit" style={styles.submitButton}>Senden</button>
-        </form>
+        {thankYouMessage ? (
+          <p style={styles.thankYouMessage}>Dankeschön! Ihre Nachricht wurde gesendet.</p>
+        ) : (
+          <form onSubmit={handleSubmit} style={styles.form}>
+            {formFields.map(({ id, type, placeholder, label, isTextArea, ...rest }) => (
+              <div key={id} style={styles.formGroup}>
+                <label htmlFor={id} style={styles.label}>{label}</label>
+                {isTextArea ? (
+                  <textarea
+                    id={id}
+                    name={id}
+                    value={formData[id]}
+                    onChange={handleChange}
+                    placeholder={placeholder}
+                    style={styles.textarea}
+                    {...rest}
+                  />
+                ) : (
+                  <input
+                    type={type}
+                    id={id}
+                    name={id}
+                    value={formData[id]}
+                    onChange={handleChange}
+                    placeholder={placeholder}
+                    style={styles.input}
+                    {...rest}
+                  />
+                )}
+              </div>
+            ))}
+            <button type="submit" style={styles.submitButton}>Senden</button>
+          </form>
+        )}
       </div>
     </section>
   );
@@ -223,6 +229,11 @@ const styles = {
     color: '#000',
     fontWeight: 'bold',
     textTransform: 'uppercase',
+  },
+  thankYouMessage: {
+    fontSize: '1.2rem',
+    color: '#FFD700',
+    marginTop: '20px',
   },
 };
 

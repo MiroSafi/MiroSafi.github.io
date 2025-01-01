@@ -34,11 +34,11 @@ const Hero = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/+491234567890', '_blank');
+    window.open('https://wa.me/+4915259090110', '_blank');
   };
 
   const handleCallClick = () => {
-    window.location.href = 'tel:+491234567890';
+    window.location.href = 'tel:+4956143083015';
   };
 
   const handleEmailClick = () => {
@@ -68,9 +68,9 @@ const Hero = () => {
         }}
       >
         {/* Icon */}
-        <div style={styles.icon}>
+        {/* <div style={styles.icon}>
           <img src="/icons/logo.jpeg" alt="Taxi Icon" style={styles.iconImage} />
-        </div>
+        </div> */}
 
         {/* Heading */}
         <h2 style={styles.heading}>Taxikules</h2>
