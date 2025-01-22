@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
       {/* Copyright */}
       <div style={styles.copyright}>
-        &copy; {new Date().getFullYear()} Taxicules. Alle Rechte vorbehalten.
+        &copy; {new Date().getFullYear()} Taxikules. Alle Rechte vorbehalten.
       </div>
     </footer>
   );

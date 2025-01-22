@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header style={styles.header}>
-      <h1 style={styles.logo}>Taxicules</h1>
+      <h1 style={styles.logo}>Taxikules</h1>
 
       {/* Burger icon */}
       <button style={styles.burgerButton} onClick={toggleMenu}>

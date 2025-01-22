@@ -55,7 +55,7 @@ const Hero = () => {
       <Header />
 
       {/* Background video */}
-      <video autoPlay loop muted style={styles.video}>
+      <video autoPlay loop muted preload="auto" style={styles.video}>
         <source src="/videos/bg_video01.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

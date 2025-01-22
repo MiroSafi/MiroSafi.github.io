@@ -51,7 +51,7 @@ const About = () => {
         }}
       >
         <p>
-          <strong>Willkommen bei Taxicules – Ihrem verlässlichen Partner für jede Fahrt!</strong>
+          <strong>Willkommen bei Taxikules – Ihrem verlässlichen Partner für jede Fahrt!</strong>
         </p>
         <p>
           Bei uns stehen <strong>Pünktlichkeit</strong>, <strong>Zuverlässigkeit</strong> und{' '}
@@ -64,7 +64,7 @@ const About = () => {
           Und das Europa weit!</strong>
         </p>
         <p>
-          Entscheiden Sie sich für Taxicules und erleben Sie einen Service, der durch Qualität und
+          Entscheiden Sie sich für Taxikules und erleben Sie einen Service, der durch Qualität und
           Kundenorientierung überzeugt.
         </p>
       </div>
