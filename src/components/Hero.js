@@ -52,7 +52,7 @@ const Hero = () => {
       style={styles.hero}
     >
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
 
       {/* Background video */}
       <video autoPlay loop muted preload="auto" style={styles.video}>
@@ -109,6 +109,8 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    width: '100%',
+    maxWidth: '100vw',
   },
   video: {
     position: 'absolute',

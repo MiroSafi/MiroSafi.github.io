@@ -9,8 +9,8 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div>
-      {/* <Header /> */}
+    <div >
+      <Header />
       <Hero />
       <Contact />
       <About />
@@ -19,6 +19,16 @@ const App = () => {
       <Footer />
     </div>
   );
+};
+
+const styles = {
+  container:{
+     
+      width: '100%',
+      maxWidth: '100vw',
+    
+    
+  }
 };
 
 export default App;

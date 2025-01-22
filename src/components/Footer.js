@@ -7,7 +7,7 @@ const Footer = () => {
         {/* Address */}
         <div style={styles.infoBlock}>
           <h4 style={styles.title}>Adresse</h4>
-          <p style={styles.text}>Am bettenhäuser Bahnhof 5</p>
+          <p style={styles.text}>Am bettenhäuser Bahnhof 5, 34123 Kassel</p>
         </div>
 
         {/* Telephone */}
