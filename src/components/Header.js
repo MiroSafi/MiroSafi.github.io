@@ -138,7 +138,9 @@ const styles = {
     gap: '5px',
     cursor: 'pointer',
     padding: '5px',
+    marginRight: '25px', // Add margin to move the button inward
   },
+  
   burgerLine: {
     width: '30px',
     height: '4px',

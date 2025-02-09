@@ -128,7 +128,7 @@ const Contact = () => {
                 )}
               </div>
             ))}
-            <button type="submit" style={styles.submitButton}>Senden</button>
+            <button id='submit-button' type="submit" style={styles.submitButton}>Senden</button>
           </form>
         )}
       </div>

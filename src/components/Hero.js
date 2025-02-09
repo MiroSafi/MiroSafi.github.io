@@ -55,7 +55,7 @@ const Hero = () => {
       {/* <Header /> */}
 
       {/* Background video */}
-      <video autoPlay loop muted preload="auto" style={styles.video}>
+      <video autoPlay loop muted playsInline preload="auto" style={styles.video}>
         <source src="/videos/bg_video01.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -77,7 +77,7 @@ const Hero = () => {
 
         {/* Buttons */}
         <div style={styles.buttonGroup}>
-          <button style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
+          <button id='whatsapp-button' style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
             <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
             WhatsApp
           </button>
@@ -85,7 +85,7 @@ const Hero = () => {
             <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
             056143083015
           </button>
-          <button style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
+          <button id='email-button' style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
             <FontAwesomeIcon icon={faEnvelope} style={styles.iconStyle} />
             Email
           </button>
