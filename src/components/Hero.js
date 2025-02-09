@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Header from './Header'; // Import Header component
+// import Header from './Header'; // Import Header component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome component
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'; // Import specific icons

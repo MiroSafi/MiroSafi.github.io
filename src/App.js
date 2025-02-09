@@ -21,14 +21,14 @@ const App = () => {
   );
 };
 
-const styles = {
-  container:{
+// const styles = {
+//   container:{
      
-      width: '100%',
-      maxWidth: '100vw',
+//       width: '100%',
+//       maxWidth: '100vw',
     
     
-  }
-};
+//   }
+// };
 
 export default App;
