@@ -36,7 +36,7 @@ const styles = {
     color: '#FFD700', // Golden text
     padding: '20px 0',
     textAlign: 'center',
-    fontFamily: "'Open Sans', sans-serif",
+    // fontFamily: "'Open Sans', sans-serif",
   },
   container: {
     display: 'flex',

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import Header from './Header'; // Import Header component
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome component
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -15,7 +14,7 @@ const Hero = () => {
           if (entry.isIntersecting) {
             setIsVisible(true);
           } else {
-            setIsVisible(false); // Reset visibility for repeat animations
+            setIsVisible(false);
           }
         });
       },
@@ -46,55 +45,38 @@ const Hero = () => {
   };
 
   return (
-    <section
-      id="hero"
-      ref={sectionRef}
-      style={styles.hero}
-    >
-      {/* Header */}
-      {/* <Header /> */}
-
-      {/* Background video */}
-      <video autoPlay loop muted playsInline preload="auto" style={styles.video}>
-        <source src="/videos/bg_video01_formatted.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section id="hero" ref={sectionRef} style={styles.hero}>
+      {/* Video Background */}
+      <div style={styles.videoContainer}>
+        <video autoPlay loop muted playsInline preload="auto" style={styles.video}>
+          <source src="/videos/bg_video01_formatted.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div style={styles.overlay}></div> {/* Dark Overlay */}
+      </div>
 
       {/* Centralized Content */}
-      <div
-        style={{
-          ...styles.overlay,
-          ...(isVisible ? styles.visible : styles.hidden),
-        }}
-      >
-        {/* Icon */}
-        {/* <div style={styles.icon}>
-          <img src="/icons/logo.jpeg" alt="Taxi Icon" style={styles.iconImage} />
-        </div> */}
-
-        {/* Heading */}
+      <div style={{ ...styles.content, ...(isVisible ? styles.visible : styles.hidden) }}>
         <h2 style={styles.heading}>Taxikules</h2>
 
         {/* Buttons */}
         <div style={styles.buttonGroup}>
-          <button id='whatsapp-button' style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
+          <button id="whatsapp-button" style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
             <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
             WhatsApp
           </button>
-          <button id='tel-button' style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
+          <button id="tel-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
             <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
             056143083015
           </button>
-          <button id='email-button' style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
+          <button id="email-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
             <FontAwesomeIcon icon={faEnvelope} style={styles.iconStyle} />
             Email
           </button>
         </div>
 
         {/* Legend */}
-        <p style={styles.legend}>
-          Pünktlich. Zuverlässig. Kassel, Vienna, Frankfurt am Main, Hamburg, Berlin.
-        </p>
+        <p style={styles.legend}>Pünktlich. Zuverlässig. Kassel, Vienna, Frankfurt am Main, Hamburg, Berlin.</p>
       </div>
     </section>
   );
@@ -112,17 +94,29 @@ const styles = {
     width: '100%',
     maxWidth: '100vw',
   },
-  video: {
+  videoContainer: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
+    zIndex: -2, // Send video behind content
+  },
+  video: {
+    width: '100%',
+    height: '100%',
     objectFit: 'cover',
-    zIndex: -1,
-    opacity: 0.8,
   },
   overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)', // Darken the background
+    zIndex: -1, // Place above video, but below content
+  },
+  content: {
     position: 'relative',
     color: '#FFF',
     zIndex: 1,
@@ -142,18 +136,12 @@ const styles = {
     opacity: 1,
     transform: 'translateY(0)',
   },
-  icon: {
-    marginBottom: '15px',
-  },
-  iconImage: {
-    width: '60px',
-    height: '60px',
-  },
   heading: {
-    fontSize: '2rem',
+    fontSize: '4rem',
     margin: '10px 0 15px',
     fontWeight: 'bold',
-    fontFamily: "'Roboto', sans-serif",
+    color: '#FFD700',
+    textShadow: '-2px -2px 0 black, 2px -2px 0 black, -2px  2px 0 black, 2px  2px 0 black',
   },
   buttonGroup: {
     display: 'flex',
@@ -163,8 +151,7 @@ const styles = {
   },
   button: {
     padding: '10px 20px',
-    fontSize: '1rem',
-    fontWeight: 'bold',
+    fontSize: '1.7rem',
     border: 'none',
     borderRadius: '5px',
     color: '#000',
@@ -174,13 +161,13 @@ const styles = {
     gap: '10px',
   },
   iconStyle: {
-    fontSize: '1.2rem',
+    fontSize: '2.2rem',
   },
   legend: {
-    fontSize: '1rem',
+    fontSize: '2rem',
     marginTop: '10px',
     color: '#FFD700',
-    fontStyle: 'italic',
+    textShadow: '-2px -2px 0 black, 2px -2px 0 black, -2px  2px 0 black, 2px  2px 0 black',
     fontFamily: "'Roboto', sans-serif",
     textAlign: 'center',
   },

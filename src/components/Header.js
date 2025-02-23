@@ -91,18 +91,6 @@ const Header = () => {
               Contact
             </ScrollLink>
           </li>
-          {/* <li style={styles.navItem}>
-            <ScrollLink
-              to="footer"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              Footer
-            </ScrollLink>
-          </li> */}
         </ul>
       </nav>
 
@@ -118,15 +106,17 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
-    backgroundColor: '#333',
+    backgroundColor: '#1a1a1a',
     color: '#FFD700',
     position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
+    maxWidth: '100vw',  // Prevents it from exceeding the viewport width
     zIndex: 1000,
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
   },
+  
   logo: {
     fontSize: '24px',
   },
@@ -153,12 +143,15 @@ const styles = {
     right: 0,
     height: '100vh',
     width: '250px',
+    maxWidth: '100vw', // Prevents from exceeding viewport
     backgroundColor: '#222',
     padding: '20px',
     transform: 'translateX(100%)',
     transition: 'transform 0.3s ease-in-out',
     zIndex: 1001,
+    overflowX: 'hidden', // Prevents unintended horizontal scroll
   },
+  
   navList: {
     listStyle: 'none',
     padding: 0,
