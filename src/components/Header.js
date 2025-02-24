@@ -12,18 +12,27 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  // Mapping of section names (English) to their German labels
+  const menuItems = [
+    // { section: 'hero', label: 'Startseite' },
+    { section: 'services', label: 'Dienstleistungen' },
+    { section: 'contact', label: 'Kontakt' },
+    { section: 'about', label: 'Über uns' },
+    { section: 'pricing', label: 'Preise' },
+  ];
+
   return (
     <header style={styles.header}>
       <h1 style={styles.logo}>Taxikules</h1>
 
-      {/* Burger icon */}
-      <button style={styles.burgerButton} onClick={toggleMenu}>
+      {/* Burger Menu Button */}
+      <button style={styles.burgerButton} onClick={toggleMenu} aria-label="Menü öffnen">
         <span style={styles.burgerLine}></span>
         <span style={styles.burgerLine}></span>
         <span style={styles.burgerLine}></span>
       </button>
 
-      {/* Navigation menu */}
+      {/* Navigation Menu */}
       <nav
         style={{
           ...styles.nav,
@@ -31,70 +40,24 @@ const Header = () => {
         }}
       >
         <ul style={styles.navList}>
-          <li style={styles.navItem}>
-            <ScrollLink
-              to="hero"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              Home
-            </ScrollLink>
-          </li>
-          <li style={styles.navItem}>
-            <ScrollLink
-              to="services"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              Services
-            </ScrollLink>
-          </li>
-          <li style={styles.navItem}>
-            <ScrollLink
-              to="about"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              About
-            </ScrollLink>
-          </li>
-          <li style={styles.navItem}>
-            <ScrollLink
-              to="pricing"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              Pricing
-            </ScrollLink>
-          </li>
-          <li style={styles.navItem}>
-            <ScrollLink
-              to="contact"
-              smooth={true}
-              duration={500}
-              offset={-70}
-              onClick={closeMenu}
-              style={styles.navLink}
-            >
-              Contact
-            </ScrollLink>
-          </li>
+          {menuItems.map(({ section, label }) => (
+            <li key={section} style={styles.navItem}>
+              <ScrollLink
+                to={section}
+                smooth={true}
+                duration={500}
+                offset={-70}
+                onClick={closeMenu}
+                style={styles.navLink}
+              >
+                {label}
+              </ScrollLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
-      {/* Overlay */}
+      {/* Overlay for closing menu */}
       {isMenuOpen && <div style={styles.overlay} onClick={closeMenu}></div>}
     </header>
   );
@@ -112,14 +75,15 @@ const styles = {
     top: 0,
     left: 0,
     width: '100%',
-    maxWidth: '100vw',  // Prevents it from exceeding the viewport width
+    maxWidth: '100vw',
     zIndex: 1000,
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
   },
-  
+
   logo: {
     fontSize: '24px',
   },
+
   burgerButton: {
     background: 'transparent',
     border: 'none',
@@ -127,31 +91,37 @@ const styles = {
     flexDirection: 'column',
     gap: '5px',
     cursor: 'pointer',
-    padding: '5px',
-    marginRight: '25px', // Add margin to move the button inward
+    padding: '10px',
+    marginRight: '20px',
+    zIndex: 1100,
   },
-  
+
   burgerLine: {
     width: '30px',
     height: '4px',
     backgroundColor: '#FFD700',
     borderRadius: '2px',
   },
+
   nav: {
     position: 'fixed',
     top: 0,
     right: 0,
-    height: '100vh',
-    width: '250px',
-    maxWidth: '100vw', // Prevents from exceeding viewport
+    height: 'auto',
+    minHeight: '50vh',
+    width: 'auto',
+    minWidth: '160px',
     backgroundColor: '#222',
     padding: '20px',
     transform: 'translateX(100%)',
     transition: 'transform 0.3s ease-in-out',
     zIndex: 1001,
-    overflowX: 'hidden', // Prevents unintended horizontal scroll
+    display: 'flex',
+    // flexDirection: 'column',
+    alignItems: 'center',
+    borderRadius: '8px 0 0 8px',
   },
-  
+
   navList: {
     listStyle: 'none',
     padding: 0,
@@ -159,15 +129,25 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '20px',
+    alignItems: 'center',
   },
+
   navItem: {
     textAlign: 'center',
+    width: '100%',
+    // padding: '5px 0',
   },
+
   navLink: {
     color: '#FFD700',
     textDecoration: 'none',
     fontSize: '1.2rem',
+    padding: '10px 15px',
+    borderRadius: '5px',
+    transition: 'background 0.3s',
+    // paddingTop  : '10px',
   },
+
   overlay: {
     position: 'fixed',
     top: 0,

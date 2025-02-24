@@ -38,7 +38,7 @@ const styles = {
     marginRight: '10px',  // Space between icon and text
   },
   title: {
-    // fontFamily: "'Roboto', sans-serif",  // Use a more robust, modern font
+    // fontFamily: "'Roboto', sans-serif" !important,  // Use a more robust, modern font
     // fontWeight: 'bold',
   },
 };

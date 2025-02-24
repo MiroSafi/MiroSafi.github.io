@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Hero = () => {
@@ -64,6 +64,10 @@ const Hero = () => {
           <button id="whatsapp-button" style={{ ...styles.button, backgroundColor: '#25D366' }} onClick={handleWhatsAppClick}>
             <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
             WhatsApp
+          </button>
+          <button id="email-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
+            <FontAwesomeIcon icon={faInstagram} style={styles.iconStyle} />
+            Instagram
           </button>
           <button id="tel-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
             <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
