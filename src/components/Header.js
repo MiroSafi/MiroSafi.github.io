@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,9 +17,7 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  // Mapping of section names (English) to their German labels
   const menuItems = [
-    // { section: 'hero', label: 'Startseite' },
     { section: 'services', label: 'Dienstleistungen' },
     { section: 'contact', label: 'Kontakt' },
     { section: 'about', label: 'Über uns' },
@@ -25,7 +28,7 @@ const Header = () => {
     <header style={styles.header}>
       <h1 style={styles.logo}>Taxikules</h1>
 
-      {/* Burger Menu Button */}
+      {/* Burger Button */}
       <button style={styles.burgerButton} onClick={toggleMenu} aria-label="Menü öffnen">
         <span style={styles.burgerLine}></span>
         <span style={styles.burgerLine}></span>
@@ -41,7 +44,7 @@ const Header = () => {
       >
         <ul style={styles.navList}>
           {menuItems.map(({ section, label }) => (
-            <li key={section} style={styles.navItem}>
+            // <li style={styles.navItem}>
               <ScrollLink
                 to={section}
                 smooth={true}
@@ -52,12 +55,12 @@ const Header = () => {
               >
                 {label}
               </ScrollLink>
-            </li>
+            // </li>
           ))}
         </ul>
       </nav>
 
-      {/* Overlay for closing menu */}
+      {/* Overlay to Close Menu */}
       {isMenuOpen && <div style={styles.overlay} onClick={closeMenu}></div>}
     </header>
   );
@@ -105,21 +108,18 @@ const styles = {
 
   nav: {
     position: 'fixed',
-    top: 0,
-    right: 0,
+    top: '50px', // Below the header
+    right: '20px', // Adjusted for minimal width
     height: 'auto',
-    minHeight: '50vh',
-    width: 'auto',
-    minWidth: '160px',
     backgroundColor: '#222',
-    padding: '20px',
+    padding: '10px 15px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
     transform: 'translateX(100%)',
     transition: 'transform 0.3s ease-in-out',
     zIndex: 1001,
-    display: 'flex',
-    // flexDirection: 'column',
-    alignItems: 'center',
-    borderRadius: '8px 0 0 8px',
+    // overflowX: 'hidden',
+    // width: 'fit-content', // 👈 Automatically adjusts to menu items
   },
 
   navList: {
@@ -128,24 +128,24 @@ const styles = {
     margin: 0,
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '10px',
     alignItems: 'center',
   },
 
   navItem: {
     textAlign: 'center',
     width: '100%',
-    // padding: '5px 0',
+    // listStyle: 'none',  // Ensure no markers
   },
 
   navLink: {
     color: '#FFD700',
     textDecoration: 'none',
     fontSize: '1.2rem',
-    padding: '10px 15px',
+    padding: '8px 12px',
     borderRadius: '5px',
     transition: 'background 0.3s',
-    // paddingTop  : '10px',
+    listStyle: 'none'
   },
 
   overlay: {
