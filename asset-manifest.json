@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kassel/static/css/main.cbf02d76.css",
-    "main.js": "/kassel/static/js/main.3a575733.js",
-    "static/js/488.8fda70c2.chunk.js": "/kassel/static/js/488.8fda70c2.chunk.js",
-    "index.html": "/kassel/index.html",
-    "main.cbf02d76.css.map": "/kassel/static/css/main.cbf02d76.css.map",
-    "main.3a575733.js.map": "/kassel/static/js/main.3a575733.js.map",
-    "488.8fda70c2.chunk.js.map": "/kassel/static/js/488.8fda70c2.chunk.js.map"
+    "main.css": "/static/css/main.cbf02d76.css",
+    "main.js": "/static/js/main.5d70ca7b.js",
+    "static/js/488.8fda70c2.chunk.js": "/static/js/488.8fda70c2.chunk.js",
+    "index.html": "/index.html",
+    "main.cbf02d76.css.map": "/static/css/main.cbf02d76.css.map",
+    "main.5d70ca7b.js.map": "/static/js/main.5d70ca7b.js.map",
+    "488.8fda70c2.chunk.js.map": "/static/js/488.8fda70c2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cbf02d76.css",
-    "static/js/main.3a575733.js"
+    "static/js/main.5d70ca7b.js"
   ]
 }
