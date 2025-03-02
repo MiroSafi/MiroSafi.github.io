@@ -6,6 +6,7 @@ import About from './components/About.js';
 import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Impressum from './components/Impressum';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <About />
       <Services />
       <Pricing />
+      <Impressum />
       <Footer />
     </div>
   );

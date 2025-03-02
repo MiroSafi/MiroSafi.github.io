@@ -44,6 +44,11 @@ const Hero = () => {
     window.location.href = 'mailto:taxikules@gmail.com';
   };
 
+  const handleInstagramClick = () => {
+    window.open("https://www.instagram.com/taxikassel_taxikules?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", "_blank");
+  };
+  
+
   return (
     <section id="hero" ref={sectionRef} style={styles.hero}>
       {/* Video Background */}
@@ -65,10 +70,6 @@ const Hero = () => {
             <FontAwesomeIcon icon={faWhatsapp} style={styles.iconStyle} />
             WhatsApp
           </button>
-          <button id="email-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
-            <FontAwesomeIcon icon={faInstagram} style={styles.iconStyle} />
-            Instagram
-          </button>
           <button id="tel-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleCallClick}>
             <FontAwesomeIcon icon={faPhone} style={styles.iconStyle} />
             056143083015
@@ -76,6 +77,10 @@ const Hero = () => {
           <button id="email-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleEmailClick}>
             <FontAwesomeIcon icon={faEnvelope} style={styles.iconStyle} />
             Email
+          </button>
+          <button id="insta-button" style={{ ...styles.button, backgroundColor: '#FFD700' }} onClick={handleInstagramClick}>
+            <FontAwesomeIcon icon={faInstagram} style={styles.iconStyle} />
+            Instagram
           </button>
         </div>
 
