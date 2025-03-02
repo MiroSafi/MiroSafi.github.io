@@ -73,7 +73,7 @@ const About = () => {
           <li>Premium-Fahrer mit Tourguide-Kenntnissen</li>
         </ul>
 
-        <h3>Die Zukunft: Flugtaxis in Kassel!</h3>
+        {/* <h3>Die Zukunft: Flugtaxis in Kassel!</h3>
         <p>
           Taxikules plant, das erste <strong>Flugtaxi-Unternehmen Deutschlands</strong> zu werden!
           Kooperationen mit führenden Firmen sind bereits abgeschlossen.
@@ -82,7 +82,7 @@ const About = () => {
           <li>Modernste Mobilität für Kassel</li>
           <li>Neue Arbeitsplätze & Innovation für die Region</li>
           <li>Effizientere & schnellere Transportmöglichkeiten</li>
-        </ul>
+        </ul> */}
 
         <h3>Jetzt Taxi bestellen!</h3>
         <p>Taxikules wächst weiter – bald auch in Berlin, Frankfurt, Paris & Vienna!</p>
