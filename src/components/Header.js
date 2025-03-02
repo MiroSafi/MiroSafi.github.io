@@ -54,7 +54,7 @@ const Header = () => {
       >
         <ul style={styles.navList}>
           {menuItems.map(({ section, label }) => (
-            <li key={section} style={styles.navItem}>
+            // <li key={section} style={styles.navItem}>
               <ScrollLink
                 to={section}
                 smooth={true}
@@ -65,7 +65,7 @@ const Header = () => {
               >
                 {label}
               </ScrollLink>
-            </li>
+            // </li>
           ))}
         </ul>
       </nav>
