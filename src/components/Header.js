@@ -30,7 +30,7 @@ const Header = () => {
       {/* Make "Taxikules" a clickable link to the homepage */}
       <h1 style={styles.logo}>
         <Link to="/kassel" style={styles.logoLink}>
-          Taxikules
+          Taxi Kassel 1a - Taxikules
         </Link>
       </h1>
 

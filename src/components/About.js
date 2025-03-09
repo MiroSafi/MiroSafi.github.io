@@ -8,11 +8,7 @@ const About = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          } else {
-            setIsVisible(false);
-          }
+          setIsVisible(entry.isIntersecting);
         });
       },
       { threshold: 0.2 }
@@ -48,8 +44,8 @@ const About = () => {
         <h2>Taxikules – Ihr zuverlässiges Taxi in Kassel!</h2>
         <p>
           Willkommen bei <strong>Taxikules – Taxi Kassel 1A</strong>! Wir bieten
-          schnelle, zuverlässige und preiswerte Taxifahrten in Kassel und Umgebung –
-          <strong> 24/7 für Sie im Einsatz.</strong>
+          schnelle, zuverlässige und preiswerte Taxifahrten in Kassel und Umgebung –{" "}
+          <strong>24/7 für Sie im Einsatz.</strong>
         </p>
 
         <h3>Warum Taxikules?</h3>
@@ -73,20 +69,14 @@ const About = () => {
           <li>Premium-Fahrer mit Tourguide-Kenntnissen</li>
         </ul>
 
-        {/* <h3>Die Zukunft: Flugtaxis in Kassel!</h3>
-        <p>
-          Taxikules plant, das erste <strong>Flugtaxi-Unternehmen Deutschlands</strong> zu werden!
-          Kooperationen mit führenden Firmen sind bereits abgeschlossen.
-        </p>
-        <ul>
-          <li>Modernste Mobilität für Kassel</li>
-          <li>Neue Arbeitsplätze & Innovation für die Region</li>
-          <li>Effizientere & schnellere Transportmöglichkeiten</li>
-        </ul> */}
-
         <h3>Jetzt Taxi bestellen!</h3>
         <p>Taxikules wächst weiter – bald auch in Berlin, Frankfurt, Paris & Vienna!</p>
         <p><strong>Jetzt anrufen & Fahrt sichern!</strong></p>
+
+        {/* Redirect Link to kassel.de */}
+        <a href="http://www.kassel.de/" target="_blank" rel="noopener noreferrer" style={styles.linkButton}>
+          Mehr über Kassel erfahren
+        </a>
       </div>
     </section>
   );
@@ -123,6 +113,22 @@ const styles = {
     fontSize: "1.1rem",
     lineHeight: "1.6",
     marginTop: "20px", // Space between header and text block
+  },
+  linkButton: {
+    display: "block",
+    marginTop: "20px",
+    padding: "10px 20px",
+    backgroundColor: "#000",
+    color: "#FFD700",
+    textDecoration: "none",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    textAlign: "center",
+    borderRadius: "5px",
+    transition: "background 0.3s ease-in-out",
+  },
+  linkButtonHover: {
+    backgroundColor: "#444",
   },
   headerHidden: {
     opacity: 0,

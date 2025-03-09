@@ -85,7 +85,7 @@ const Hero = () => {
         </div>
 
         {/* Legend */}
-        <p style={styles.legend}>Pünktlich. Zuverlässig. Kassel, Vienna, Frankfurt, Hamburg, Berlin.</p>
+        <p style={styles.legend}>Pünktlich. Zuverlässig. Kassel Taxi 1a</p>
       </div>
     </section>
   );
