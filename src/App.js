@@ -8,10 +8,13 @@ import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Impressum from "./components/Impressum";
+import CookieConsent from "react-cookie-consent";
+
 
 const App = () => {
   return (
-    <Router basename="/kassel">
+    // <Router basename="/kassel">
+    <Router >
       {/* 👈 Set basename to /kassel */}
       <Header />
       <Routes>
@@ -28,10 +31,30 @@ const App = () => {
             </>
           }
         />
+        {/* Kassel Page Route */}
+        <Route path="/kassel" element={<>
+              <Hero />
+              <Contact />
+              <About />
+              <Services />
+              <Pricing />
+            </>} />
         {/* Impressum Page Route */}
         <Route path="/impressum" element={<Impressum />} />
       </Routes>
       <Footer />
+      <CookieConsent
+            location="bottom"
+            buttonText="Akzeptieren"
+            declineButtonText="Ablehnen"
+            enableDeclineButton
+            cookieName="taxikulesCookieConsent"
+            style={{ background: "#222", color: "#FFD700" }}
+            buttonStyle={{ background: "#FFD700", color: "#000", fontSize: "14px" }}
+            declineButtonStyle={{ background: "#444", color: "#FFD700", fontSize: "14px" }}
+          >
+            Wir verwenden Cookies, um die Benutzererfahrung zu verbessern. <a href="/datenschutz" style={{ color: "#FFD700" }}>Mehr erfahren</a>.
+          </CookieConsent>
     </Router>
   );
 };

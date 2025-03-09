@@ -29,7 +29,7 @@ const Header = () => {
     <header style={styles.header}>
       {/* Make "Taxikules" a clickable link to the homepage */}
       <h1 style={styles.logo}>
-        <Link to="/" style={styles.logoLink}>
+        <Link to="/kassel" style={styles.logoLink}>
           Taxikules
         </Link>
       </h1>

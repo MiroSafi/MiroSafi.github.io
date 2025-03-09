@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Impressum = () => {
-  const textRef = useRef(null);
+  const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -14,138 +14,100 @@ const Impressum = () => {
       { threshold: 0.2 }
     );
 
-    if (textRef.current) {
-      observer.observe(textRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      if (textRef.current) {
-        observer.unobserve(textRef.current);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
   return (
-    <section id="impressum" style={styles.container}>
-      <div
-        ref={textRef}
-        style={{
-          ...styles.content,
-          ...(isVisible ? styles.visible : styles.hidden),
-        }}
-      >
-        <h2 style={styles.heading}>Impressum</h2>
-        <h3 style={styles.subheading}>Angaben gemäß § 5 TMG</h3>
-        <p><strong>Mierweiss Safi</strong></p>
-        <p>Am Bettenhäuser Bahnhof 5</p>
-        <p>34123 Kassel</p>
+    <section
+      id="impressum"
+      ref={sectionRef}
+      style={{
+        ...styles.section,
+        ...(isVisible ? styles.visible : styles.hidden),
+      }}
+    >
+      <div style={styles.container}>
+        <div style={styles.box}>
+          <h2 style={styles.heading}>Impressum</h2>
+          <p><strong>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz):</strong></p>
+          <p>Mierweis Safi<br />Am Bettenhäuser Bahnhof 5<br />34123 Kassel<br />Deutschland</p>
+          <p><strong>Kontakt:</strong><br />Telefon: +49 561 4308 3015<br />E-Mail: taxikules@gmail.com</p>
+          <p><strong>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:</strong><br />DE290085905</p>
+          <p><strong>Aufsichtsbehörde:</strong><br />[Hier die zuständige Behörde mit Adresse und Website angeben]</p>
 
-        <h3 style={styles.subheading}>Kontakt</h3>
-        <p>
-          Telefon: <a href="tel:+4917688366883" style={styles.link}>+49 561 43083015</a>
-        </p>
-        <p>
-          E-Mail: <a href="mailto:info@herkulestaxikassel.de" style={styles.link}>taxikules@gmail.com</a>
-        </p>
+          <h3>Haftungsausschluss</h3>
+          <p><strong>Haftung für Inhalte:</strong></p>
+          <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+          <p><strong>Haftung für Links:</strong></p>
+          <p>Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
+          <p><strong>Urheberrecht:</strong></p>
+          <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
 
-        <h3 style={styles.subheading}>Bildrechte</h3>
-        <p>Die Bilder wurden von uns selbst aufgenommen und erstellt.</p>
+          <h3>Datenschutzerklärung</h3>
+          <p><strong>1. Datenschutz auf einen Blick</strong></p>
+          <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Nachfolgend informieren wir Sie darüber, welche Daten wir erheben, wie wir sie nutzen und welche Rechte Ihnen zustehen.</p>
+          <p><strong>Verantwortlicher für die Datenverarbeitung:</strong></p>
+          <p>Mierweis Safi<br />Am Bettenhäuser Bahnhof 5<br />34123 Kassel<br />E-Mail: taxikules@gmail.com</p>
 
-        <h3 style={styles.subheading}>Webseite</h3>
-        <p>Die Webseite wurde von uns entwickelt.</p>
-
-        <h3 style={styles.subheading}>Haftung für Inhalte</h3>
-        <p>
-          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen 
-          Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, 
-          übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die 
-          auf eine rechtswidrige Tätigkeit hinweisen.
-        </p>
-        <p>
-          Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen 
-          bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer 
-          konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir 
-          diese Inhalte umgehend entfernen.
-        </p>
-
-        <h3 style={styles.subheading}>Haftung für Links</h3>
-        <p>
-          Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. 
-          Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
-          Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten 
-          wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum 
-          Zeitpunkt der Verlinkung nicht erkennbar.
-        </p>
-        <p>
-          Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer 
-          Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links 
-          umgehend entfernen.
-        </p>
-
-        <h3 style={styles.subheading}>Urheberrecht</h3>
-        <p>
-          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen 
-          Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
-          Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. 
-          Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-        </p>
-        <p>
-          Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter 
-          beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine 
-          Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von 
-          Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-        </p>
+          <h3>2. Erhebung und Speicherung personenbezogener Daten</h3>
+          <p><strong>a) Beim Besuch der Website</strong></p>
+          <p>Beim Aufrufen unserer Website www.taxikules.de werden automatisch Informationen gespeichert, darunter:</p>
+          <ul>
+            <li>IP-Adresse des anfragenden Rechners</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>Name und URL der abgerufenen Datei</li>
+            <li>Referrer-URL (von welcher Website der Zugriff erfolgt)</li>
+            <li>Verwendeter Browser und Betriebssystem</li>
+          </ul>
+        </div>
       </div>
     </section>
   );
 };
 
 const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100vh",
+  section: {
     padding: "50px 20px",
     backgroundColor: "#222",
     color: "#FFD700",
+    textAlign: "left",
+    display: "flex",
+    justifyContent: "center",
+  },
+  container: {
+    maxWidth: "800px",
+    margin: "0 auto",
+  },
+  heading: {
+    fontSize: "2rem",
+    marginBottom: "20px",
     textAlign: "center",
   },
-  content: {
-    maxWidth: "800px",
+  box: {
     backgroundColor: "#FFD700",
     color: "#000",
-    padding: "30px",
-    borderRadius: "20px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
-    textAlign: "left",
+    padding: "20px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
+    marginBottom: "20px",
+  },
+  visible: {
+    opacity: 1,
+    transform: "translateY(0)",
     transition: "opacity 1s ease-out, transform 1s ease-out",
   },
   hidden: {
     opacity: 0,
     transform: "translateY(50px)",
-  },
-  visible: {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
-  heading: {
-    fontSize: "2.5rem",
-    marginBottom: "20px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  subheading: {
-    fontSize: "1.5rem",
-    marginTop: "20px",
-    fontWeight: "bold",
-    color: "#FFD700",
-  },
-  link: {
-    color: "#222",
-    textDecoration: "none",
-    fontWeight: "bold",
+    transition: "opacity 1s ease-out, transform 1s ease-out",
   },
 };
 
