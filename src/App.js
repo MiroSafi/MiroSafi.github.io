@@ -8,7 +8,9 @@ import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Impressum from "./components/Impressum";
+import Cookies from "./components/Cookies";
 import CookieConsent from "react-cookie-consent";
+import CookieBanner from "./components/CookieBanner";
 
 
 const App = () => {
@@ -41,9 +43,10 @@ const App = () => {
             </>} />
         {/* Impressum Page Route */}
         <Route path="/impressum" element={<Impressum />} />
+        <Route path="/Cookies" element={<Cookies />} />
       </Routes>
       <Footer />
-      <CookieConsent
+      {/* <CookieConsent
             location="bottom"
             buttonText="Akzeptieren"
             declineButtonText="Ablehnen"
@@ -54,7 +57,8 @@ const App = () => {
             declineButtonStyle={{ background: "#444", color: "#FFD700", fontSize: "14px" }}
           >
             Wir verwenden Cookies, um die Benutzererfahrung zu verbessern. <a href="/datenschutz" style={{ color: "#FFD700" }}>Mehr erfahren</a>.
-          </CookieConsent>
+          </CookieConsent> */}
+      <CookieBanner />
     </Router>
   );
 };
